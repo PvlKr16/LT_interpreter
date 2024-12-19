@@ -39,4 +39,4 @@ def echo_all(message):
 # print(LANGUAGES)
 
 if __name__ == "__main__":
-    bot.polling(none_stop=True)
+    bot.polling()
