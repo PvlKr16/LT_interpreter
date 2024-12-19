@@ -13,14 +13,14 @@ translator = Translator()
 @bot.message_handler(func=lambda msg: True)
 def echo_all(message):
     text_to_translate = message.text
-    print(message)
+    # print(message)
     if translator.detect(text_to_translate).lang == "lt" and translator.detect(text_to_translate).confidence >= 0.80:
         translated_text = translator.translate(text_to_translate, dest="be").text
     elif translator.detect(text_to_translate).lang == "be" and translator.detect(text_to_translate).confidence >= 0.80:
         translated_text = translator.translate(text_to_translate, dest="lt").text
     else:
         translated_text = "something weird"
-    print(translated_text)
+    # print(translated_text)
     bot.reply_to(message, translated_text)
 
 # text_to_translate = "добрай раніцы"
@@ -39,4 +39,4 @@ def echo_all(message):
 # print(LANGUAGES)
 
 if __name__ == "__main__":
-    bot.polling()
+    bot.polling(none_stop=True)
