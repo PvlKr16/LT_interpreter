@@ -12,11 +12,13 @@ def echo_all(message):
     text_to_translate = message.text
     if translator.detect(text_to_translate).lang == "lt" and translator.detect(text_to_translate).confidence >= 0.80:
         translated_text = translator.translate(text_to_translate, dest="be").text
+        bot.reply_to(message, translated_text)
     elif translator.detect(text_to_translate).lang == "be" and translator.detect(text_to_translate).confidence >= 0.80:
         translated_text = translator.translate(text_to_translate, dest="lt").text
-    else:
-        translated_text = "something weird"
-    bot.reply_to(message, translated_text)
+        bot.reply_to(message, translated_text)
+    # else:
+    #     translated_text = "something weird"
+    # bot.reply_to(message, translated_text)
 
 # text_to_translate = "добрай раніцы"
 # if translator.detect(text_to_translate).lang == "lt" and translator.detect(text_to_translate).confidence >= 0.80:
