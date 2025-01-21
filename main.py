@@ -4,6 +4,7 @@ from config_data import config
 
 
 bot = telebot.TeleBot(token=config.BOT_TOKEN)
+# bot = telebot.TeleBot(token='7748896528:AAFkRweNmrV_jJNtGwUdFZsXMdpaw4rJRV4')
 translator = Translator()
 
 
