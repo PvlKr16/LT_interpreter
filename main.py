@@ -1,5 +1,5 @@
 import telebot
-from googletrans import Translator, LANGUAGES
+from googletrans import Translator
 from config_data import config
 
 
@@ -10,30 +10,14 @@ translator = Translator()
 @bot.message_handler(func=lambda msg: True)
 def echo_all(message):
     text_to_translate = message.text
-    if translator.detect(text_to_translate).lang == "lt" and translator.detect(text_to_translate).confidence >= 0.80:
-        translated_text = translator.translate(text_to_translate, dest="be").text
-        bot.reply_to(message, translated_text)
-    elif translator.detect(text_to_translate).lang == "be" and translator.detect(text_to_translate).confidence >= 0.80:
-        translated_text = translator.translate(text_to_translate, dest="lt").text
-        bot.reply_to(message, translated_text)
-    # else:
-    #     translated_text = "something weird"
-    # bot.reply_to(message, translated_text)
-
-# text_to_translate = "добрай раніцы"
-# if translator.detect(text_to_translate).lang == "lt" and translator.detect(text_to_translate).confidence >= 0.80:
-#     print(translator.translate(text_to_translate, dest="be").text)
-# elif translator.detect(text_to_translate).lang == "be" and translator.detect(text_to_translate).confidence >= 0.80:
-#     print(translator.translate(text_to_translate, dest="lt").text)
-
-
-# print(translator.detect('이 문장은 한글로 쓰여졌습니다.'))
-# detected = translator.detect('이 문장은 한글로 쓰여졌습니다.').lang
-# print(detected)
-# translated = translator.translate('안녕하세요')
-# print(translated)
-# print(translated.text)
-# print(LANGUAGES)
+    try:
+        detected = translator.detect(text_to_translate)
+        lang_map = {"lt": "be", "be": "lt"}
+        if detected.lang in lang_map and detected.confidence >= 0.80:
+            translated_text = translator.translate(text_to_translate, dest=lang_map[detected.lang]).text
+            bot.reply_to(message, translated_text)
+    except Exception as e:
+        bot.reply_to(message, f"Error occurred: {str(e)}")
 
 if __name__ == "__main__":
     bot.polling(none_stop=True)
