@@ -1,13 +1,14 @@
 import os
 import telebot
 import subprocess
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from googletrans import Translator
 
 
-load_dotenv()
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+# load_dotenv()
+# BOT_TOKEN = os.getenv("BOT_TOKEN")
 # BOT_TOKEN = os.environ["BOT_TOKEN"]
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 print(f"BOT_TOKEN: {BOT_TOKEN}")
 print("🔹 Все переменные окружения Railway:")
 print(os.environ)
