@@ -5,8 +5,8 @@ from googletrans import Translator
 
 
 load_dotenv()
-# BOT_TOKEN = os.getenv("BOT_TOKEN")
-BOT_TOKEN = os.environ["BOT_TOKEN"]
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+# BOT_TOKEN = os.environ["BOT_TOKEN"]
 print(f"BOT_TOKEN: {BOT_TOKEN}")
 print("🔹 Все переменные окружения Railway:")
 print(os.environ)
