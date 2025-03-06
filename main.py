@@ -1,5 +1,6 @@
 import os
 import telebot
+import subprocess
 from dotenv import load_dotenv
 from googletrans import Translator
 
@@ -10,6 +11,8 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 print(f"BOT_TOKEN: {BOT_TOKEN}")
 print("🔹 Все переменные окружения Railway:")
 print(os.environ)
+print("🔍 Переменные окружения в контейнере Railway:")
+subprocess.run(["env"], shell=True)
 if not BOT_TOKEN:
     raise ValueError("Ошибка: переменная BOT_TOKEN не загружена!")
 bot = telebot.TeleBot(token=BOT_TOKEN)

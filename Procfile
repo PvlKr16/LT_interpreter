@@ -1,1 +1,1 @@
-worker: python main.py
+worker: BOT_TOKEN=7748896528:AAFkRweNmrV_jJNtGwUdFZsXMdpaw4rJRV4 python main.py
