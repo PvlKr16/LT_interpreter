@@ -6,6 +6,7 @@ from googletrans import Translator
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+print(f"BOT_TOKEN: {BOT_TOKEN}")
 if not BOT_TOKEN:
     raise ValueError("Ошибка: переменная BOT_TOKEN не загружена!")
 bot = telebot.TeleBot(token=BOT_TOKEN)
