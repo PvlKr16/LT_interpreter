@@ -5,8 +5,11 @@ from googletrans import Translator
 
 
 load_dotenv()
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+# BOT_TOKEN = os.getenv("BOT_TOKEN")
+BOT_TOKEN = os.environ["BOT_TOKEN"]
 print(f"BOT_TOKEN: {BOT_TOKEN}")
+print("🔹 Все переменные окружения Railway:")
+print(os.environ)
 if not BOT_TOKEN:
     raise ValueError("Ошибка: переменная BOT_TOKEN не загружена!")
 bot = telebot.TeleBot(token=BOT_TOKEN)
