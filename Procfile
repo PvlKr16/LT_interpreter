@@ -1,1 +1,1 @@
-worker: bash -c "echo $BOT_TOKEN && python main.py"
+worker: python main.py
