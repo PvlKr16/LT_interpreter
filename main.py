@@ -1,9 +1,12 @@
+import os
 import telebot
+from dotenv import load_dotenv
 from googletrans import Translator
-from config_data import config
 
 
-bot = telebot.TeleBot(token=config.BOT_TOKEN)
+load_dotenv()
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(token=BOT_TOKEN)
 translator = Translator()
 
 
